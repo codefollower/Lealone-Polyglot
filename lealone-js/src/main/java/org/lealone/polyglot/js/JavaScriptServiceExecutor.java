@@ -60,7 +60,7 @@ public class JavaScriptServiceExecutor extends ServiceExecutorBase {
         Object[] args = getServiceMethodArgs(methodName, methodArgs);
         org.graalvm.polyglot.Value function = functionMap.get(methodName);
         try {
-            String ret = function.execute(args).asString();
+            String ret = function.execute(args).toString();
             if (ret == null)
                 return ValueNull.INSTANCE;
             return ValueString.get(ret);
@@ -74,7 +74,7 @@ public class JavaScriptServiceExecutor extends ServiceExecutorBase {
         Object[] args = getServiceMethodArgs(methodName, methodArgs);
         org.graalvm.polyglot.Value function = functionMap.get(methodName);
         try {
-            String ret = function.execute(args).asString();
+            String ret = function.execute(args).toString();
             if (ret == null)
                 return null;
             return ret;
@@ -88,7 +88,7 @@ public class JavaScriptServiceExecutor extends ServiceExecutorBase {
         Object[] args = getServiceMethodArgs(methodName, json);
         org.graalvm.polyglot.Value function = functionMap.get(methodName);
         try {
-            String ret = function.execute(args).asString();
+            String ret = function.execute(args).toString();
             if (ret == null)
                 return null;
             return ret;
