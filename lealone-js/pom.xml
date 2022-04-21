@@ -21,7 +21,6 @@
         <dependency>
             <groupId>org.lealone</groupId>
             <artifactId>lealone-main</artifactId>
-            <version>${project.version}</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.graalvm -->

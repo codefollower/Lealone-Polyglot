@@ -22,6 +22,7 @@ import org.lealone.main.Lealone;
 public class JavaScriptServerStart {
 
     public static void main(String[] args) {
+        args = new String[] { "-baseDir", "target/test-data" };
         Lealone.main(args);
     }
 }
