@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.graalvm.polyglot.Context;
+import org.graalvm.polyglot.HostAccess;
 import org.graalvm.polyglot.Source;
 import org.lealone.common.exceptions.DbException;
 import org.lealone.common.util.CamelCaseHelper;
@@ -34,7 +35,9 @@ public class PythonServiceExecutor extends ServiceExecutorBase {
         Source source;
         org.graalvm.polyglot.Value bindings;
         try {
-            context = Context.newBuilder().allowIO(true).build();
+            context = Context.newBuilder().allowIO(true).allowHostAccess(HostAccess.ALL)
+                    // allows access to all Java classes
+                    .allowHostClassLookup(className -> true).build();
             source = Source.newBuilder("python", new File(service.getImplementBy())).build();
             context.eval(source);
             bindings = context.getBindings("python");
